@@ -8,7 +8,7 @@ namespace src
     {
         string duration = "";
         int price = 0;
-        string number_of_people = "";
+        int number_of_people = 0;
 
 
         public string Duration
@@ -16,7 +16,7 @@ namespace src
             get { return this.duration; }
             set { this.duration = value; }
         }
-        public string Number
+        public int Number
         {
             get { return this.number_of_people; }
             set { this.number_of_people = value; }
