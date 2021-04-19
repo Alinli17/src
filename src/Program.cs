@@ -1,5 +1,6 @@
 ﻿using System;
-using System.IO; 
+using System.IO;
+using System.Linq;
 
 namespace src
 {
@@ -23,7 +24,7 @@ namespace src
                 }
                 Trips = new Trip[n];
                 ReadTrip();
-
+                Sort();
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -88,6 +89,12 @@ namespace src
 
                 Trips[i].Number = number_of_people;
             }
+        }
+        static public void Sort()
+        {
+            Trips = Trips.AsQueryable<Trip>().OrderBy(a => a.Price).ThenBy(a => a.Number).ToArray();
+
+            Console.WriteLine("Отсортировано!");
         }
     }
 }
