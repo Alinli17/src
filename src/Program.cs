@@ -25,6 +25,7 @@ namespace src
                 Trips = new Trip[n];
                 ReadTrip();
                 Sort();
+                Save();
                 Console.ReadKey();
             }
             catch (Exception ex)
@@ -95,6 +96,17 @@ namespace src
             Trips = Trips.AsQueryable<Trip>().OrderBy(a => a.Price).ThenBy(a => a.Number).ToArray();
 
             Console.WriteLine("Отсортировано!");
+        }
+        static public void Save()
+        {
+            using (StreamWriter stream = new StreamWriter("D:/Users/stu-pksp117/Desktop/file.txt"))
+            {
+                foreach (Trip trip in Trips)
+                {
+                    stream.WriteLine(trip.Duration + "; " + trip.Price + "; " + trip.Number + ".");
+                }
+                Console.WriteLine("Сохранение прошло успешно!");
+            }
         }
     }
 }
